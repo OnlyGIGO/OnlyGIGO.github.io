@@ -1,7 +1,7 @@
 ---
 title: "Parsing and Validation: A Dangerous Differences between programming languages and implementations"
 categories: [security]
-tags: [security,parsing,validation,RFC,python,golang,javascript]
+tags: [security,parsing,validation,RFC,python,golang]
 ---
 ## Introduction
 RFCs are the backbone of internet standards, and they often define how data should be parsed and validated. However, different programming languages and implementations can interpret these RFCs in various ways, leading to potential security vulnerabilities. This is largely due to RFCs using vague language and words like "should" and "may," which can be interpreted differently by different implementations. 
