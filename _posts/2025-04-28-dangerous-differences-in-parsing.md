@@ -51,7 +51,7 @@ Their XML schema for publishing books is as follows:
 
 The bookstore is very security conscious and went above and beyond to validate the data they receive. They went unrealistically hard on the validation and only allow alphanumeric characters in title of the book with maximum length of 50 characters. They also only allow regular ASCII letters in the author name. The price must be a decimal number and the publish date must be in YYYY-MM-DD format.
 
-Notice that in real world scenario we would be using defusedxml package to prevent XXE attacks and other security issues. **HOWEVER** it would not have prevented the issue we are going to discuss in this post anyway. We are simply not using it to allow readers to run this code more easily incase they want to as defusedxml is not a standard library and is not installed by default.
+Notice that in real world scenario we would be using defusedxml package to prevent XXE attacks and other security issues. **HOWEVER** it would not have prevented the issue we are going to discuss in this post anyway. We are simply not using it to allow readers to run this code more easily incase they want to, as defusedxml is not a standard library and is not installed by default.
 
 Following is the code for parsing and validating the XML in python:
 ```python
@@ -154,7 +154,7 @@ if __name__ == '__main__':
 Everything seems to be working fine the validator seemingly catches all the errors in data. You can play with it yourself if you manage to bypass the validation in any meaningful way, but I doubt it as it is pretty robust.
 
 
-After the validation is done the python backend sends the data to golang microservice which is responsible for storing the data into a database. The golang microservice is also responsible for parsing and validating the XML data. The golang code for parsing and validating the XML data is as follows:
+After the validation is done the python backend sends the data to golang microservice which is responsible for storing the data into a database. The golang microservice is also responsible for parsing and validating the XML data, however with less validation as the developers assume only already validated data ever reaches it. The golang code for parsing and validating the XML data is as follows:
 ```go
 package main
 
@@ -267,4 +267,4 @@ Always be aware of the potential differences in parsing and validation across di
 Best ways to avoid this are in my experience to either regenerate the data from the validated data which can also protect from other issues or to use XSD schema to validate the XML. 
 
 ## Postscript
-If this or any other post makes you appreciate my thought process, problem solving skills or decent understanding of how various things work please hire me.
+If this or any other post makes you appreciate my thought process, problem solving skills or understanding of how various things work please hire me.

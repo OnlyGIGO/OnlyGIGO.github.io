@@ -152,4 +152,4 @@ Always understand whatever you are parsing perfectly and be confident that you u
 Also always reconstruct the object from the parsed parts instead of passing the user input directly, especially if it is a high risk part of your application. The last part also applies even if you feel like you understand what is being parsed perfectly as there is always a chance that you are wrong also there are language and implementation specific differences in parsing. This is due to RFCs not being clear about all edge cases or using words like "should" and "may" which are often interpreted differently by different developers. I will possibly be discussing these differences further in future blog posts.
 
 ## Postscript
-If this or any other post makes you appreciate my thought process, problem solving skills or decent understanding of how various things work please hire me.
+If this or any other post makes you appreciate my thought process, problem solving skills or understanding of how various things work please hire me.
