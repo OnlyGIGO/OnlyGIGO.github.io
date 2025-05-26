@@ -1,11 +1,11 @@
 ---
-title: "Parsing and Validation: A Dangerous Differences between programming languages and implementations"
+title: "Parsing and Validation: Dangerous Differences between programming languages and implementations"
 categories: [security]
 tags: [security,parsing,validation,RFC,python,golang]
 ---
 ## Introduction
 RFCs are the backbone of internet standards, and they often define how data should be parsed and validated. However, different programming languages and implementations can interpret these RFCs in various ways, leading to potential security vulnerabilities. This is largely due to RFCs using vague language and words like "should" and "may," which can be interpreted differently by different implementations. 
-Sometimes RCFs are way too broad and following them perfectly is simply impossible and/or unrealistic leading to once again inconsistencies in how data is parsed and validated.
+Sometimes RCFs are way too broad and following them perfectly is simply impossible and/or unrealistic leading to further inconsistencies in how data is parsed and validated.
 
 A good example of this is RFC 5222 which defines the syntax for email addresses. It is so broad that no email provider follows it perfectly. As an example gmail only allows minimum 6 characters for the local part of the email address, while hotmail allows 1 character. Gmail allows local part of the address to start with a number, while hotmail does not.
 
@@ -207,7 +207,7 @@ func main() {
 			continue
 		}
 		// parse date
-		d, err := time.Parse("2025-04-28", b.DateStr) //first argument is the layout, second is the value to parse
+		d, err := time.Parse("2006-01-02", b.DateStr) //first argument is the layout, second is the value to parse
 		if err != nil {
 			log.Printf("Book #%d: invalid publish_date %q: %v", i+1, b.DateStr, err)
 			continue
@@ -222,7 +222,7 @@ func main() {
 		fmt.Printf("Title       : %s\n", b.Title)
 		fmt.Printf("Author      : %s\n", b.Author)
 		fmt.Printf("Price       : %.2f\n", b.Price)
-		fmt.Printf("PublishDate : %s\n\n", b.PublishDate.Format("2025-04-28"))
+		fmt.Printf("PublishDate : %s\n\n", b.PublishDate.Format("2006-01-02")) // Go uses a specific date to format time, this is the reference date
         //here we would be storing the data into a database, but for the sake of this example we are just printing it out for simplicity
 	}
 }
@@ -236,7 +236,7 @@ Book #1:
   Price       : 19.99
   PublishDate : 2023-01-01
 ```
-All sorts of invalid date is quickly caught by the python validator and never reaches the golang microservice. Everything is all fine and good until really clever attacked tries to exploit the system with following XML:
+All sorts of invalid dates are quickly caught by the python validator and never reaches the golang microservice. Everything is all fine and good until really clever attacker tries to exploit the system with following XML:
 ```xml
  <books>
         <book>
