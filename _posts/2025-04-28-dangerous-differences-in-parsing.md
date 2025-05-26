@@ -236,7 +236,7 @@ Book #1:
   Price       : 19.99
   PublishDate : 2023-01-01
 ```
-All sorts of invalid dates are quickly caught by the python validator and never reaches the golang microservice. Everything is all fine and good until really clever attacker tries to exploit the system with following XML:
+All sorts of invalid dates are quickly caught by the python validator and never reach the golang microservice. Everything is all fine and good until really clever attacker tries to exploit the system with following XML:
 ```xml
  <books>
         <book>
