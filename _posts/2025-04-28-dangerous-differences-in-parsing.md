@@ -36,7 +36,7 @@ We will be comparing the differences in specifically XML parsing and validation.
 - XXE - XML External Entity, a type of attack that allows an attacker to interfere with the processing of XML data. This can lead to various attacks, such as file disclosure, server-side request forgery (SSRF), and denial of service (DoS) attacks.
 
 ## XML Parsing and Validation
-We will start with XML parsing and therefore validation differences between programming languages. We will explore a hypothetical bookstore. That decided to use python backend to handle user authentication, XML parsing and validation, golang as a microservice to then store the data into a database. To save time and effort the bookstore decided to pass XML to golang as well instead of transforming it into JSON or protocol buffers.
+We will start with XML parsing and therefore validation differences between programming languages. We will explore a hypothetical bookstore using a polyglot backend with python and golang. That decided to use python backend to handle user authentication, XML parsing and validation, golang as a microservice to then store the data into a database. To save time and effort the bookstore decided to pass XML to golang as well instead of transforming it into JSON or protocol buffers.
 Their XML schema for publishing books is as follows:
 ```xml
 <books>
